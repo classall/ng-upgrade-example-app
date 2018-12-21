@@ -1,9 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { UpgradeModule } from "@angular/upgrade/static";
+import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
 
 import { AppComponent } from './app.component';
 import { NgxComponentComponent } from './ngx-component/ngx-component.component';
+
+declare var angular: any;
+angular.module('ng1App')
+  .directive(
+    'ngxComponent',
+    downgradeComponent({ component: NgxComponentComponent })
+  );
 
 @NgModule({
   declarations: [
@@ -14,6 +21,7 @@ import { NgxComponentComponent } from './ngx-component/ngx-component.component';
     BrowserModule,
     UpgradeModule
   ],
+  entryComponents: [NgxComponentComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
