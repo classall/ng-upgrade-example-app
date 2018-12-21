@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { UpgradeModule } from "@angular/upgrade/static";
 
 import { AppComponent } from './app.component';
+import { NgxComponentComponent } from './ngx-component/ngx-component.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NgxComponentComponent
   ],
   imports: [
     BrowserModule,
