@@ -8,7 +8,7 @@ class Ng1Controller {
 
 let Ng1Component = {
   controller: Ng1Controller,
-  templateUrl: './ng1-component.html'
+  templateUrl: 'src/ng1/components/ng1-component/ng1-component.html'
 };
 
 export default Ng1Component;

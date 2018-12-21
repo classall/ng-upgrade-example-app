@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 src/ng1/dist
+src/ng1/templates.js
 
 # dependencies
 /node_modules

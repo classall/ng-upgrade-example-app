@@ -7,6 +7,7 @@ import babel from 'gulp-babel';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import ngAnnotate from 'browserify-ngannotate';
+import templateCache from 'gulp-angular-templatecache';
 
 const interceptErrors = function(error) {
   var args = Array.prototype.slice.call(arguments);
@@ -21,8 +22,8 @@ const interceptErrors = function(error) {
   this.emit('end');
 };
 
-gulp.task('browserify', () => {
-  return browserify('./src/ng1/app.js')
+gulp.task('browserify', ['views'], () => {
+  return browserify('src/ng1/app.js')
     .transform(babelify, {
       presets: ['es2015']
     })
@@ -33,6 +34,16 @@ gulp.task('browserify', () => {
     .pipe(source('app.js'))
     // Start piping stream to tasks!
     .pipe(gulp.dest('src/ng1/dist'));
+});
+
+gulp.task('views', function() {
+  return gulp.src('src/ng1/**/*.html')
+    .pipe(templateCache({
+      root: 'src/ng1',
+      standalone: true,
+      module: 'templates'
+    }))
+    .pipe(gulp.dest('src/ng1'));
 });
 
 gulp.task('build', ['browserify']);

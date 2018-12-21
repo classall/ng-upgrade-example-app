@@ -23,6 +23,7 @@
             "polyfills": "src/ngx/polyfills.ts",
             "tsConfig": "src/ngx/tsconfig.app.json",
             "assets": [
+              "src/ng1/dist",
               "src/ngx/favicon.ico",
               "src/ngx/assets"
             ],
